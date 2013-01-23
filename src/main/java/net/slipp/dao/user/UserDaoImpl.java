@@ -10,7 +10,9 @@ import net.slipp.domain.user.User;
 import net.slipp.support.jdbc.ConnectionManager;
 
 public class UserDaoImpl implements UserDao{
-private ConnectionManager connectionManager = null;
+	
+	private ConnectionManager connectionManager = null;
+	
 	public UserDaoImpl (ConnectionManager connectionManager) {
 		this.connectionManager = connectionManager;
 	}
@@ -18,6 +20,10 @@ private ConnectionManager connectionManager = null;
 	public void insert(User user) throws SQLException, PropertyVetoException {
 		String sql = "INSERT INTO USERS VALUES (?, ?, ?, ?)";
 		executeUpdate(user, sql);
+	}
+	public void deleteAllUser() throws SQLException, PropertyVetoException {
+		String sql = "DELETE FROM USERS";
+		executeUpdate(null,sql);
 	}
 
 	private void executeUpdate(User user,String sql) throws SQLException,
@@ -69,12 +75,6 @@ private ConnectionManager connectionManager = null;
 			close(con, pstmt);
 		}
 	}
-
-	public void deleteAllUser() throws SQLException, PropertyVetoException {
-		String sql = "DELETE FROM USERS";
-		executeUpdate(null,sql);
-	}
-
 	private void close(Connection con, PreparedStatement pstmt)
 			throws SQLException {
 		if (pstmt != null) {
