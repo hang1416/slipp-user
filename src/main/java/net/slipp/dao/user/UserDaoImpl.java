@@ -2,14 +2,13 @@ package net.slipp.dao.user;
 
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import net.slipp.domain.user.User;
 import net.slipp.support.jdbc.ConnectionManager;
 
 public class UserDaoImpl implements UserDao{
+	
 	ConnectionManager connectionManager;
 	
 	public UserDaoImpl (ConnectionManager connectionManager) {
